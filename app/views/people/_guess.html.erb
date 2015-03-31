@@ -1,7 +1,11 @@
 <%= form_tag("/gender", method: "get") do %>
-  <%= label_tag(:height, "Height:") %>
-  <%= text_field_tag(:height) %>
-  <%= label_tag(:weight, "Weight:") %>
+  <div class="field">
+	  <%= label_tag(:height, "Height:") %> (<feet>.<inches>)<br>
+	  <%= text_field_tag(:height) %>
+  </div>
+  <div class="field">
+  <%= label_tag(:weight, "Weight:") %> (<lbs>)<br>
   <%= text_field_tag(:weight) %>
+  </div>
   <%= submit_tag("Classify My Gender") %>
 <% end %>

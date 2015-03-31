@@ -88,6 +88,7 @@ class PeopleController < ApplicationController
     else 
       SeedTrainingData.new()
     end
+    redirect_to people_url
   end
 
   def reset
