@@ -94,6 +94,7 @@ class PeopleController < ApplicationController
     Person.all.each do |record|
       record.destroy
     end
+    redirect_to people_url
   end
 
   private
