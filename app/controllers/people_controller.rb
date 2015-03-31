@@ -5,6 +5,10 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     @people = Person.all
+    if params[:seed].nil?
+    else 
+      SeedTrainingData.new()
+    end
   end
 
   # GET /people/1
@@ -83,19 +87,14 @@ class PeopleController < ApplicationController
 
   end
 
-  def seed
-    if params[:seed].nil?
-    else 
-      SeedTrainingData.new()
-    end
-    redirect_to people_url
-  end
-
   def reset
     Person.all.each do |record|
       record.destroy
     end
     redirect_to people_url
+  end
+
+  def seed
   end
 
   private

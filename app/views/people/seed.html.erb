@@ -11,7 +11,7 @@
   	<li>height between 4' and 5'11''</li>
   	<li>weight between 115 and 180 lbs</li>
 </ul>
-<%= form_tag("/seed", method: "get") do %>
+<%= form_tag("/people", method: "get") do %>
 Would you like to train some random gender data?
 <%= hidden_field(:seed, value: 'true') %>
 <%= submit_tag("Yes, train it for me")%>

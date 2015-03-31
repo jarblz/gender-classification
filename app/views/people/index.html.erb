@@ -1,5 +1,5 @@
 <h1>Trained Data on Gender, Height, and Weight</h1>
-<table>
+<table cellpadding="10">
 <thead>
   <tr>
     <th>Sex</th>
@@ -12,10 +12,10 @@
   <% @people.each do |person| %>
     <tr>
       <td><%= person.sex %></td>
-      <td><%= person.height %></td>
-      <td><%= person.weight %></td>
-      <td><%= link_to 'Show', person %></td>
-      <td><%= link_to 'Edit', edit_person_path(person) %></td>
+      <td align='center'><%= person.height %> </td>
+      <td><%= person.weight %> </td>
+      <td><%= link_to 'Show', person %> </td>
+      <td><%= link_to 'Edit', edit_person_path(person) %> </td>
       <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
