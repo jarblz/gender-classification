@@ -14,7 +14,8 @@ class PeopleController < ApplicationController
     if params[:reset].nil?
     else
       Person.all.each do |record|
-      record.destroy
+        record.destroy
+      end
     end
   end
 
