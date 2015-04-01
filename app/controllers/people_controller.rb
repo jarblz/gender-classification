@@ -5,9 +5,16 @@ class PeopleController < ApplicationController
   # GET /people.json
   def index
     @people = Person.all
+    #if we are coming from the seed page, seed stuff
     if params[:seed].nil?
     else 
       SeedTrainingData.new()
+    end
+    #if we are coming from the reset page, delete all trained data
+    if params[:reset].nil?
+    else
+      Person.all.each do |record|
+      record.destroy
     end
   end
 
@@ -81,17 +88,15 @@ class PeopleController < ApplicationController
     elsif Person.where(sex:'Male').length < 3
       redirect_to controller: 'people', action: 'guess', notice: 'You must train at least 3 males!' 
     else
+      #initiate the classifier
       classifier = ClassifySex.new()
+      #perform a classification based on values set up for our model
       @classification = classifier.classify(@height,@weight)
     end
 
   end
 
   def reset
-    Person.all.each do |record|
-      record.destroy
-    end
-    redirect_to people_url
   end
 
   def seed

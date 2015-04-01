@@ -32,23 +32,11 @@ class ClassifySex
 		@female_height_variance = variance @female_height_mean, *@height_feature["Female"]
 		@female_weight_mean = mean *@weight_feature["Female"]
 		@female_weight_variance = variance @female_weight_mean, *@weight_feature["Female"]		
-=begin
-		puts "==================="
-		puts @male_height_mean
-		puts @male_weight_mean
-		puts @male_height_variance
-		puts @male_weight_variance
-		puts "==================="
-		puts @female_height_mean
-		puts @female_weight_mean
-		puts @female_height_variance
-		puts @female_weight_variance
-		puts "==================="	
-=end
 
 	end
 
 	def mean(*args)
+		#compute mean: 
 		return (args.sum)/(args.length)
 	end
 	
@@ -64,9 +52,7 @@ class ClassifySex
 
 	end
 	def classify(height,weight)
-		puts "male: #{get_male_score(height,weight)}"
-		puts "female: #{get_female_score(height,weight)}"
-
+		#compute scores for male and female and choose the highest
 		if get_female_score(height, weight) > get_male_score(height, weight)
 			return "Female"
 		elsif get_female_score(height, weight) < get_male_score(height, weight)
@@ -77,6 +63,7 @@ class ClassifySex
 	end
 
 	def get_female_score(height,weight)
+		#Using a gaussian to classify a score
 		pi = Math::PI
 		e = Math::E
 		exp_h = (-1/2)*((height-@female_height_mean)**2/@female_height_variance)
@@ -86,6 +73,7 @@ class ClassifySex
 		return (likelihood_w*likelihood_h*@prior_female)
 	end
 	def get_male_score(height,weight)
+		#Using a gaussian to classify a score
 		pi = Math::PI
 		e = Math::E
 		exp_h = (-1/2)*((height-@male_height_mean)**2/@male_height_variance)

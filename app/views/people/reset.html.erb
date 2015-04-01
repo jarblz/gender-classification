@@ -1,0 +1,7 @@
+<h1>Reset all training data</h1>
+<p>This button will reset all trained data, proceed?</p>
+<%= form_tag("/people", method: "get") do %>
+<%= hidden_field(:reset, value: 'true') %>
+<%= submit_tag("Yes, start over please")%>
+<%end%>
+
